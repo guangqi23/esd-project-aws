@@ -12,9 +12,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 CORS(app)
 
-record_URL = environ.get('record_URL')  or 'http://52.45.19.10:5000/record' 
+record_URL = environ.get('record_URL')  or 'http://raffleoak.tech:5000/record' 
 # deduct_URL = "http://localhost:5000/deduct_product/"
-location_URL = environ.get('location_URL')  or 'http://52.45.19.10:5007/location' 
+location_URL = environ.get('location_URL')  or 'http://raffleoak.tech:5007/location' 
 
 @app.route("/place_raffle", methods=["POST"])
 def place_raffle():

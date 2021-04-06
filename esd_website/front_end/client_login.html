@@ -220,7 +220,7 @@
         
         async function client_register() {
 
-            var client_register_url = "http://52.45.19.10:5004/register"
+            var client_register_url = "http://raffleoak.tech:5004/register"
             var company_register = document.getElementById("company_register").value;
             var password_register = document.getElementById("password_register").value;
             var phone_number_register = document.getElementById("phone_number_register").value;
@@ -254,7 +254,7 @@
         async function client_login(){
             var company = document.getElementById("login_company").value;
             var password = document.getElementById("login_password").value;
-            const client_login_url = "http://52.45.19.10:5004/authenticate";
+            const client_login_url = "http://raffleoak.tech:5004/authenticate";
 
             requestBody = {
                 "username": company,

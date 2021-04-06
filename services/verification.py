@@ -13,8 +13,8 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 CORS(app)
 
-record_URL = environ.get('record_URL') or 'http://52.45.19.10:5000/raffle_entry' 
-entry_URL = environ.get('entry_URL')  or 'http://52.45.19.10:5002/place_raffle' 
+record_URL = environ.get('record_URL') or 'http://raffleoak.tech:5000/raffle_entry' 
+entry_URL = environ.get('entry_URL')  or 'http://raffleoak.tech:5002/place_raffle' 
 
 @app.route("/verification", methods=['POST'])
 def verify():
