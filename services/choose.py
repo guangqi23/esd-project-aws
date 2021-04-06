@@ -16,7 +16,7 @@ app = Flask(__name__)
 CORS(app)
 
 product_URL = environ.get('product_URL')  or 'http://100.25.39.15:5000/raffle_company' 
-transaction_URL = environ.get('transaction_URL') or 'http://100.25.39.15:5006/add_transactions"
+transaction_URL = environ.get('transaction_URL') or 'http://100.25.39.15:5006/add_transactions'
 
 
 
