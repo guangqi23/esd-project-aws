@@ -20,7 +20,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = environ.get('dbURL') or "mysql+mysqlconn
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 CORS(app)  
 
-location_URL = environ.get("location_url") or 'http://100.25.39.15:5000/location' 
+location_URL = environ.get("location_url") or 'http://52.45.19.10:5000/location' 
 
 #optimise route function
 @app.route("/optimisation")

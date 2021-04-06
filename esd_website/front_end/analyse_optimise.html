@@ -255,8 +255,8 @@
     <script>
         document.getElementById("get_analysis").addEventListener("submit",  e =>{
             e.preventDefault();
-            analysis_url = "http://100.25.39.15:8051";
-            // analysis_url = "http://100.25.39.15:8000/api/v1/analysis";
+            analysis_url = "http://52.45.19.10:8051";
+            // analysis_url = "http://52.45.19.10:8000/api/v1/analysis";
 
             window.location.href = analysis_url   
         });
@@ -267,7 +267,7 @@
         });
         
         async function get_optimised_route(){
-            const optimise_url = 'http://100.25.39.15:5005/map_opt';
+            const optimise_url = 'http://52.45.19.10:5005/map_opt';
 
             product_id = window.sessionStorage.getItem("product_id")
             company_id = window.sessionStorage.getItem("company_id")
@@ -293,7 +293,7 @@
                 const response = await fetch(optimise_url, requestParam);
                 data = await response.json();
                 file = data.message;
-                window.location.href = "http://100.25.39.15:5005/show_map"
+                window.location.href = "http://52.45.19.10:5005/show_map"
             } catch (error){
                 console.error(error);
             }
@@ -308,8 +308,8 @@
             const product_id = window.sessionStorage.getItem("product_id")
             const company_id = window.sessionStorage.getItem("company_id")
 
-            // var get_winners_url = 'http://100.25.39.15:5011/choose_rafflers';
-            var get_winners_url = "http://100.25.39.15:8000/api/v1/choose/choose_rafflers"
+            // var get_winners_url = 'http://52.45.19.10:5011/choose_rafflers';
+            var get_winners_url = "http://52.45.19.10:8000/api/v1/choose/choose_rafflers"
 
             requestBody = {
                 product_id: product_id,
