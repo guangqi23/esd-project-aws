@@ -274,7 +274,7 @@
             phone_num_str = "65".concat(document.getElementById("phoneNumber").value);
             phone_num = parseInt(phone_num_str);
             window.sessionStorage.setItem("phone_num", phone_num)
-            get_otp_url = "http://raffleoak.tech:5010/get_otp";
+            get_otp_url = "http://52.45.19.10:5010/get_otp";
 
             requestBody = {
                 phone_number: phone_num
@@ -300,7 +300,7 @@
             var otp_code = document.getElementById("otp_code").value;
             console.log(otp_code)
             // console.log(otp_id)
-            verify_otp_url = "http://raffleoak.tech:5010/verify_otp";
+            verify_otp_url = "http://52.45.19.10:5010/verify_otp";
             phone_num = window.sessionStorage.getItem("phone_num")
             requestBody = {
                 phone_number: phone_num,
@@ -329,8 +329,8 @@
         } 
 
         async function verify(){
-            verify_otp_url = "http://raffleoak.tech:8000/api/v1/verification";
-            // verify_otp_url = "http://raffleoak.tech:5100/verification";
+            verify_otp_url = "http://52.45.19.10:8000/api/v1/verification";
+            // verify_otp_url = "http://52.45.19.10:5100/verification";
             phone_num = window.sessionStorage.getItem("phone_num")
 
             cid = String(cid);

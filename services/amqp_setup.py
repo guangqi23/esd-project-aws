@@ -1,7 +1,7 @@
 import pika
 from os import environ
 
-hostname = environ.get('rabbit_host') or 'http://raffleoak.tech/' 
+hostname = environ.get('rabbit_host') or 'http://52.45.19.10/' 
 port = environ.get('rabbit_port') or 5672
 
 # connect to the broker and set up a communication channel in the connection
