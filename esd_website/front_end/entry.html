@@ -1,0 +1,320 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>OAK - HTML Theme</title>
+    <meta name="description" content="">
+    <meta name="msapplication-tap-highlight" content="yes" />
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, minimum-scale=1.0, maximum-scale=1.0" />
+
+    <!-- Google Web Font -->
+    <link href='http://fonts.googleapis.com/css?family=Ubuntu:300,400,500,700' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Lekton:400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <!--  Bootstrap 3-->
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <!-- OWL Carousel -->
+    <link rel="stylesheet" href="css/owl.carousel.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+
+    <!--  Slider -->
+    <link rel="stylesheet" href="css/jquery.kenburnsy.css">
+
+    <!-- Animate -->
+    <link rel="stylesheet" href="css/animate.css">
+
+    <!-- Web Icons Font -->
+    <link rel="stylesheet" href="css/pe-icon-7-stroke.css">
+    <link rel="stylesheet" href="css/iconmoon.css">
+    <link rel="stylesheet" href="css/et-line.css">
+    <link rel="stylesheet" href="css/ionicons.css">
+
+    <!-- Magnific PopUp -->
+    <link rel="stylesheet" href="css/magnific-popup.css">
+
+    <!-- Tabs -->
+    <link rel="stylesheet" type="text/css" href="css/tabs.css" />
+    <link rel="stylesheet" type="text/css" href="css/tabstyles.css" />
+
+    <!-- Loader Style -->
+    <link rel="stylesheet" href="css/loader-1.css">
+
+    <!-- Costum Styles -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/ico" href="favicon.ico">
+
+    <!-- Modernizer & Respond js -->
+    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+
+    <!-- Google Map API -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCcj7IUmQauOqpqeL5xj-UZbLb03vhBV3s&amp;sensor=false"></script>
+
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <div class="cover"></div>
+
+    <div class="header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="img/logo.png" alt="Logo">
+                </a>
+            </div>
+
+            <!-- Menu Hamburger (Default) -->
+            <button class="main-menu-indicator" id="open-button">
+                <span class="line"></span>
+            </button>
+
+            <div class="menu-wrap" style="background-image: url(img/nav_bg.jpg)">
+                <div class="menu-content">
+                    <div class="navigation">
+                        <span class="pe-7s-close close-menu" id="close-button"></span>
+                        <div class="search-wrap js-ui-search">
+                            <input class="js-ui-text" type="text" placeholder="Search Here...">
+                            <span class="eks js-ui-close"></span>
+                        </div>
+                    </div>
+                    <nav class="menu">
+                        <nav class="menu">
+                            <div class="menu-list">
+                                <ul>
+                                    <li class="menu-item-has-children"><a href="index.html">Home</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </nav>
+
+                    <div class="hidden-xs">
+                        <div class="menu-social-media">
+                            <ul>
+                                <li><a href="#"><i class="iconmoon-facebook"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-twitter"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-dribbble3"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-pinterest"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-linkedin2"></i></a></li>
+                            </ul>
+                        </div>
+
+                        <div class="menu-information">
+                            <ul>
+                                <li><span>T:</span> 65 91117444</li>
+                                <li><span>E:</span> raffle_services@gmail.com</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End of Menu Hamburger (Default) -->
+
+        </div>
+    </div>
+
+    <div class="container margin-top">
+        <div class="contact-wrapper">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="main-title">
+                        <h1>FACING ISSUES? CONTACT US</h1>
+                    </div>
+                    <div class="contact-info">
+                        <span class="icon-info">
+                        <i class="pe-7s-phone"></i>
+                    </span>
+                        <span class="title-info">CALL US:</span>
+                        <span class="description-info">+65 91117444</span>
+                    </div>
+
+                    <div class="contact-info">
+                        <span class="icon-info">
+                        <i class="pe-7s-mail"></i>
+                    </span>
+                        <span class="title-info">EMAIL:</span>
+                        <span class="description-info">raffle_services@gmail.com</span>
+                    </div>
+                </div>
+
+                <form method="POST" id="send_entry" action="#">
+                    <div class="contact-form">
+                        <div class="col-md-9">
+                            <h4>Name: </h4>
+                            <input type="text" id="name" placeholder="NAME *">
+                            <h4>Postal Code: </h4>
+                            <input type="text" id="postal" placeholder="POSTAL CODE *">
+                            <h4 id="phone_num"></h4>
+                            <h4 id="cid"></h4>
+                            <h4 id="pid"></h4>
+                            <input type="submit" style="color: black" value="CONFIRM" id="submit_btn_1">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer margin-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2 col-sm-4 col-xs-12">
+                    <div class="footer-inner">
+                        <div class="footer-content">
+                            <h4>RAFFLE SYSTEMS</h4>
+                                <address>81 Victoria St<br>Singapore 188065</address>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-2 col-md-push-8 col-sm-4 col-xs-12">
+                    <div class="footer-inner">
+                        <div class="footer-content">
+                           <h4>CONTACT INFO</h4>
+                            <p>
+                                T:65 91117444 <br>
+                                E:raffle_services@gmail.com <br>
+                                W:www.rafflesystems.com
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-4 col-sm-4 col-xs-12">
+                    <div class="footer-inner">
+                        <div class="footer-content">
+                            <ul class="social-media">
+                                <li><a href="#"><i class="iconmoon-facebook"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-twitter"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-flickr2"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-dribbble3"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-pinterest"></i></a></li>
+                                <li><a href="#"><i class="iconmoon-linkedin2"></i></a></li>
+                            </ul>
+                            <span class="copyright-mark">&copy; 2021 RAFFLE SYSTEMS, ALL RIGHTS RESERVED</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="javascript:void(0)" class="scroll-top" id="scroll-top"><i class="pe-7s-angle-up"></i></a>
+   
+    <script>
+        var pid = window.sessionStorage.getItem("product_id");
+        var cid = window.sessionStorage.getItem("company_id");
+        var phone_num = window.sessionStorage.getItem("phone_num");
+        var lat = "";
+        var lng = "";
+
+        document.getElementById("phone_num").innerHTML = "Phone Number: " + phone_num
+        // document.getElementById("rid").innerHTML = "Raffle ID: " + rid
+        document.getElementById("pid").innerHTML = "Product ID: " + pid
+        document.getElementById("cid").innerHTML = "Company ID: " + cid
+
+        document.getElementById("send_entry").addEventListener("submit", e =>{
+            e.preventDefault();
+            
+            send_entry();
+        });
+
+
+
+        // function get_lat_long(){
+        //     var postal = document.getElementById("postal").value
+        //     const key = "AIzaSyBfQEhUN7BVQ2i4Km-KrpdLdbSI9EX26n4"
+        //     api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + postal + "&key=" + key
+        //     // console.log(api_url)
+
+        //     const response = await fetch(api_url, {method: "GET"}) 
+        //     data = await response.json();
+        //     if(data.results.length > 0){
+        //         lat = data.results[0].geometry.location.lat;
+        //         lng = data.results[0].geometry.location.lng;
+        //     }
+        // }
+
+        async function send_entry(){
+            // var send_entry_url = 'http://localhost:5002/place_raffle';
+            var send_entry_url = 'http://100.25.39.15:8000/api/v1/entry/place_raffle';
+
+
+            var postal = document.getElementById("postal").value
+
+            const key = "AIzaSyBfQEhUN7BVQ2i4Km-KrpdLdbSI9EX26n4"
+            api_url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + postal + "&key=" + key
+            // console.log(api_url)
+
+            const response = await fetch(api_url, {method: "GET"}) 
+            data = await response.json();
+            if(data.results.length > 0){
+                lat = data.results[0].geometry.location.lat;
+                lng = data.results[0].geometry.location.lng;
+            }
+            else {
+                // Hardcode the lat, lng if api fails
+                lat = "1.3053"
+                lng = "103.915"
+            }
+
+            requestBody = {
+                "phone_number": phone_num,
+                "postal": postal,
+                "product_id": pid,
+                "company_id": cid,
+                "lat": lat,
+                "lng": lng
+            }
+
+            console.log("Request Body:")
+            console.log(requestBody)
+
+            var requestParam = {
+                headers:{"content-type": "application/json; charset=UTF-8"},
+                mode: "cors",
+                method: "POST",
+                body: JSON.stringify(requestBody)
+            }
+            try {
+                const response = await fetch(send_entry_url, requestParam);
+                data = await response.json();
+                if(data.message === "success"){
+                    window.location.href = "confirmation.html"
+                }
+            } catch (error){
+                console.error(error);
+            }            
+        }
+
+        
+    </script>
+
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script data-pace-options='{ "ajax": false }' src="js/vendor/pace.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/classie.js"></script>
+    <script src="js/vendor/isotope.pkgd.min.js"></script>
+    <script src="js/vendor/jquery.velocity.min.js"></script>
+    <script src="js/vendor/jquery.kenburnsy.min.js"></script>
+    <script src="js/vendor/textslide.js"></script>
+    <script src="js/vendor/imagesloaded.pkgd.min.js"></script>
+    <script src="js/vendor/tabs.js"></script>
+    <script src="js/ef-slider.js"></script>
+    <script src="js/vendor/owl.carousel.min.js"></script>
+    <script src="js/vendor/jquery.magnific-popup.min.js"></script>
+    <script src="js/vendor/jquery.social-buttons.min.js"></script>
+    <script src="js/vendor/wow.min.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/ajax.js"></script>
+    <script src="js/map-costum.js"></script>
+    <script src="js/personal.js"></script>
+</body>
+
+</html>

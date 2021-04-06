@@ -1,0 +1,289 @@
+version: "3.8"
+
+volumes:
+  rabbitmq_data:
+
+networks:
+  raffle-net:
+    driver: bridge
+
+services:
+  ###################################
+  # Record: The Record Microservice
+  ###################################
+  record:
+    build:
+      context: ./
+      dockerfile: record.Dockerfile
+    image: chuweiquan/record:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5000:5000"
+
+  ###################################
+  # Entry: The Entry Complex Microservice
+  ###################################
+  entry:
+    build:
+      context: ./
+      dockerfile: entry.Dockerfile
+    image: chuweiquan/entry:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    depends_on:
+      - record
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      record_URL: http://record:5000/record
+      location_URL: http://location:5007/location
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5002:5002"
+
+  ###################################
+  # Verification: The Verification Microservice
+  ###################################
+  verification:
+    build:
+      context: ./
+      dockerfile: verification.Dockerfile
+    image: chuweiquan/verification:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      record_URL: http://record:5000/raffle_entry
+      entry_URL: http://entry:5002/place_raffle
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5100:5100"
+
+  ###################################
+  # Map_OPT: The Map Optimisation Microservice
+  ###################################
+  map_opt:
+    build:
+      context: ./
+      dockerfile: map_opt.Dockerfile
+    image: chuweiquan/map_opt:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      location_URL: http://location:5007/location
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5005:5005"
+
+  ###################################
+  # Optimisation: The Optimisation Microservice
+  ###################################
+  optimisation:
+    build:
+      context: ./
+      dockerfile: optimisation.DockerFile
+    image: chuweiquan/optimisation:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      location_URL: http://location:5007/location
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5003:5003"
+
+  ###################################
+  # Transaction: The Transaction Microservice
+  ###################################
+  transaction:
+    build:
+      context: ./
+      dockerfile: transactions.Dockerfile
+    image: chuweiquan/transaction:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5006:5006"
+
+
+  ###################################
+  # Survey: The Survey Microservice
+  ###################################
+  survey:
+    build:
+      context: ./
+      dockerfile: survey.Dockerfile
+    image: chuweiquan/survey:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5008:5008"
+
+
+  ###################################
+  # Analysis: The Analysis Microservice
+  ###################################
+  analysis:
+    build:
+      context: ./
+      dockerfile: analysis.Dockerfile
+    image: chuweiquan/analysis:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    depends_on:
+      - record
+      - location
+      - survey
+    environment:
+      raffle_entries_url: http://record:5000/raffle_entry
+      raffle_company_url: http://record:5000/raffle_company
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "8051:8051"
+
+  ###################################
+  # OTP: The OTP Microservice
+  ###################################
+  otp:
+    build:
+      context: ./
+      dockerfile: otp.Dockerfile
+    image: chuweiquan/otp:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      # get_otp_url: https://d7-verify.p.rapidapi.com/send
+      # verify_otp_url: https://d7-verify.p.rapidapi.com/verify
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5010:5010"
+
+  ###################################
+  # Location: The Location Microservice
+  ###################################
+  location:
+    build:
+      context: ./
+      dockerfile: location.Dockerfile
+    image: chuweiquan/location:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    environment:
+      dbURL: mysql+mysqlconnector://root:esd_a_plus_2021@raffle-db.c3e0re9oziwf.us-east-1.rds.amazonaws.com:3306/raffle_db # might be subjected to changes if using RDS
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5007:5007"
+
+  ###################################
+  # RabbitMQ: The Message Broker
+  ###################################
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: esd-rabbit
+    restart: always
+    networks:
+      - raffle-net
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq # to make sure that data is not lost when restarting the container
+
+  ###################################
+  # Notification: The Notification Microservice
+  ###################################
+  notification:
+    build:
+      context: ./
+      dockerfile: notification.Dockerfile
+    image: chuweiquan/notification:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    depends_on:
+      - rabbitmq
+    environment:
+      rabbit_host: rabbitmq
+      rabbit_port: 5672
+      send_api_url: https://d7sms.p.rapidapi.com/secure/send
+      PYTHONUNBUFFERED: 1
+
+  ###################################
+  # Choose: The Choose Microservice
+  ###################################
+  choose:
+    build:
+      context: ./
+      dockerfile: choose.Dockerfile
+    image: chuweiquan/choose:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    depends_on:
+      - rabbitmq
+      - notification
+      - record
+    environment:
+      rabbit_host: rabbitmq
+      rabbit_port: 5672
+      product_URL: http://record:5000/raffle_company
+      transaction_URL: http://transaction:5006/add_transactions
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5011:5011"
+
+  ###################################
+  # Client_Login: The Client_Login Microservice
+  ###################################
+  client_login:
+    build:
+      context: ./
+      dockerfile: client_login.Dockerfile
+    image: chuweiquan/client_login:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    depends_on:
+      - record
+    environment:
+      PYTHONUNBUFFERED: 1
+    ports:
+      - "5004:5004"
+
+  ###################################
+  # Error: The Error Microservice
+  ###################################
+  error:
+    build:
+      context: ./
+      dockerfile: error.Dockerfile
+    image: chuweiquan/error:esd_proj
+    restart: always
+    networks:
+      - raffle-net
+    depends_on:
+      - rabbitmq
+    environment:
+      rabbit_host: rabbitmq
+      rabbit_port: 5672
+      PYTHONUNBUFFERED: 1

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <title>Calling APIs with POST Request</title>
+    
+    <h3> Posting a new Raffle </h3>
+    Raffle Id: 
+    <input type='text' id="raffle_id">
+    <br>
+    NRIC
+    <input type='text' id="nric">
+    <br>
+    Product Id: 
+    <input type='text' id="product_id">
+    <br>
+    Company Id:
+    <input type='text' id="company_id"> 
+
+    <br>
+    <button id="create"> Create new Raffle </button>
+    <hr>
+</head>
+<body>
+    <script>
+        async function post_data(serviceURL, requestBody) {
+            var requestParam = {
+                headers: { "content-type": "application/json; charset=UTF-8" },
+                mode: "cors", 
+                method: "POST",
+                body: JSON.stringify(requestBody)
+            }
+
+            try {
+                const response = await fetch(serviceURL, requestParam);
+                data = await response.json();
+                console.log(data);
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }   
+
+        $("#create").click(function() {
+            var user_raffle_id = $("#raffle_id").val();
+            var user_product_id = $("#product_id").val();
+            var user_company_id = $("#company_id").val();
+            var user_nric = $("#nric").val(); 
+
+            if( isEmpty(user_raffle_id) || isEmpty(user_product_id) || isEmpty(user_company_id) || isEmpty(user_nric) ) {
+                return null
+            }
+            var serviceURL = "http://100.25.39.15:5000/record"
+            var requestBody = {
+                raffle_id: user_raffle_id,
+                product_id: user_product_id,
+                company_id: user_company_id,
+                nric: user_nric
+            }
+
+            post_data(serviceURL, requestBody)
+        })
+        
+        function isEmpty(string) {
+            if(string.length == 0) {
+                return true
+            }
+            return false
+        }
+
+
+    </script>
+</body>
+</html>

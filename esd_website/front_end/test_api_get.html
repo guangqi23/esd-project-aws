@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=`, initial-scale=1.0">
+    <title>Calling Services with GET Requests</title>
+
+    <h3> Call Raffle Company</h3>
+    <button onclick="call_raffle_company()">Call Raffle Company </button>
+
+    <h3> Call Raffle Entry</h3>
+    <button onclick="call_raffle_entry()">Call Raffle Entry </button>
+
+    <h3> Call Companies</h3>
+    <button onclick="call_companies()">Call Companies </button>
+
+    
+</head>
+<body>
+    
+
+    <script>
+        async function get_all_data(serviceURL) {
+            let requestParam = {
+                mode: "cors",
+                method: "GET"
+            }
+
+            try {
+                const response = await fetch(serviceURL, requestParam);
+                data = await response.json();
+                console.log(data);
+            }
+            catch (error) {
+                console.error(error);
+            }
+        }
+
+        function call_raffle_company() {
+            var serviceURL = "http://100.25.39.15:5000/raffle_company";
+            get_all_data(serviceURL);
+        }
+
+        function call_raffle_entry() {
+            var serviceURL = "http://100.25.39.15:5000/raffle_entry";
+            get_all_data(serviceURL);
+        }
+
+        function call_companies() {
+            var serviceURL = "http://100.25.39.15:5000/company";
+            get_all_data(serviceURL);
+        }
+
+
+    </script>
+</body>
+</html>
